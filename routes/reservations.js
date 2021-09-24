@@ -1,5 +1,3 @@
-var MessagingResponse = require('twilio').twiml.MessagingResponse;
-var twilio = require('twilio');
 var express = require('express');
 var router = express.Router();
 var Property = require('../models/property');
@@ -32,13 +30,12 @@ router.post('/', function (req, res) {
 });
 
 // POST: /reservations/handle
-router.post('/handle', twilio.webhook({validate: false}), function (req, res) {
+router.post('/handle', function (req, res) {
   var from = req.body.From;
   var smsRequest = req.body.Body;
 
-  var smsResponse;
 
-  User.findOne({phoneNumber: from})
+  User.findOne({employeeId: from})
   .then(function (host) {
     return Reservation.findOne({status: 'pending'});
   })
@@ -51,20 +48,12 @@ router.post('/handle', twilio.webhook({validate: false}), function (req, res) {
   })
   .then(function (reservation) {
     var message = "You have successfully " + reservation.status + " the reservation";
-    respond(res, message);
+    console.log(message);
   })
   .catch(function (err) {
     var message = "Sorry, it looks like you do not have any reservations to respond to";
-    respond(res, message);
+    console.log(message);
   });
 });
-
-var respond = function(res, message) {
-  var messagingResponse = new MessagingResponse();
-  messagingResponse.message({}, message);
-
-  res.type('text/xml');
-  res.send(messagingResponse.toString());
-}
 
 module.exports = router;

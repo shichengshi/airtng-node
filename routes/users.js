@@ -16,7 +16,7 @@ router.post('/', function(req, res) {
     email:       req.body.email,
     username:    req.body.username,
     countryCode: req.body.countryCode,
-    phoneNumber: req.body.phoneNumber
+    employeeId: req.body.employeeId
   }), req.body.password, function(err, user) {
     if (err) {
       req.flash('error', 'Could not register the user')

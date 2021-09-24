@@ -40,7 +40,7 @@ describe('users', function () {
           email: 'bob@example.com',
           password: 's3cr3t',
           countryCode: '+1',
-          phoneNumber: '555 5555'
+          employeeId: '555 5555'
         })
         .expect(302)
         .end(function (err, res) {

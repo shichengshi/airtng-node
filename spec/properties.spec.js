@@ -134,7 +134,7 @@ var user = new User({
   username: 'bob',
   password: 's3cr3t',
   countryCode: '+1',
-  phoneNumber: '555-5555'
+  employeeId: '555-5555'
 });
 
 var authenticateUser = function() {

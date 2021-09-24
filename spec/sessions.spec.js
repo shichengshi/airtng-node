@@ -16,7 +16,7 @@ describe('sessions', function () {
       email: 'bob@example.com',
       password: password,
       countryCode: '+1',
-      phoneNumber: '555 5555'
+      employeeId: '555 5555'
     })
     .save()
       .then(function(user) {

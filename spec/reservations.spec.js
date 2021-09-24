@@ -57,7 +57,7 @@ describe('reservations', function () {
         email: 'bob@example.com',
         password: 'password',
         countryCode: '+1',
-        phoneNumber: 'from'
+        employeeId: 'from'
       });
 
       var property = new Property({
