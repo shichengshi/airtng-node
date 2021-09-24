@@ -15,7 +15,6 @@ router.post('/', function(req, res) {
   User.register(new User({
     email:       req.body.email,
     username:    req.body.username,
-    countryCode: req.body.countryCode,
     employeeId: req.body.employeeId
   }), req.body.password, function(err, user) {
     if (err) {
