@@ -12,7 +12,7 @@ router.get('/login', function(req, res) {
 
 // GET: /sessions/answer
 router.get('/answer', function(req, res) {
-  res.render('answer', { message: req.query.reservationid });
+  res.render('answer', { message: req.query.employeeid });
 });
 
 // POST: /sessions/login

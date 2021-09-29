@@ -31,13 +31,13 @@ router.post('/', function (req, res) {
 
 // POST: /reservations/handle
 router.post('/handle', function (req, res) {
-  var from = req.body.From;
-  var smsRequest = req.body.Body;
+  var from = req.query.employeeid;
+  var smsRequest = req.query.response;
   
   console.log('calling /reservations/handle :', req.query);
 
 
-  User.findOne({employeeId: from})
+  User.findOne({employeeid: from})
   .then(function (host) {
     return Reservation.findOne({status: 'pending'});
   })
@@ -51,6 +51,7 @@ router.post('/handle', function (req, res) {
   .then(function (reservation) {
     var message = "You have successfully " + reservation.status + " the reservation";
     console.log(message);
+    notifier.sendGuestNotification();
     res.redirect('/properties');
   })
   .catch(function (err) {

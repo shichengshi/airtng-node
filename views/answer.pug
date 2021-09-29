@@ -7,7 +7,7 @@ block content
   .container
     h1 Anser to
     div #{message}
-    form(action="/reservations/handle?reservationid=" + message + "&response=accept",method="post")
+    form(action="/reservations/handle?employeeid=" + message + "&response=accept",method="post")
       button.btn.btn-default(type='submit') Accept
-    form(action="/reservations/handle?reservationid=" + message + "&response=reject",method="post")
+    form(action="/reservations/handle?employeeid=" + message + "&response=reject",method="post")
       button.btn.btn-default(type='submit') Reject
