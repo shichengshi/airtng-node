@@ -1,0 +1,13 @@
+extends layout
+
+block nav_bg
+  nav.navbar.navbar-space
+
+block content
+  .container
+    h1 Anser to
+    div #{message}
+    form(action="/reservations/handle?reservationid=" + message + "&response=accept",method="post")
+      button.btn.btn-default(type='submit') Accept
+    form(action="/reservations/handle?reservationid=" + message + "&response=reject",method="post")
+      button.btn.btn-default(type='submit') Reject

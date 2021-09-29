@@ -10,6 +10,11 @@ router.get('/login', function(req, res) {
   res.render('login', { message: req.flash('error') });
 });
 
+// GET: /sessions/answer
+router.get('/answer', function(req, res) {
+  res.render('answer', { message: req.query.reservationid });
+});
+
 // POST: /sessions/login
 router.post('/login',
             passport.authenticate('local', {

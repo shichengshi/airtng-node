@@ -33,6 +33,8 @@ router.post('/', function (req, res) {
 router.post('/handle', function (req, res) {
   var from = req.body.From;
   var smsRequest = req.body.Body;
+  
+  console.log('calling /reservations/handle :', req.query);
 
 
   User.findOne({employeeId: from})
@@ -49,10 +51,12 @@ router.post('/handle', function (req, res) {
   .then(function (reservation) {
     var message = "You have successfully " + reservation.status + " the reservation";
     console.log(message);
+    res.redirect('/properties');
   })
   .catch(function (err) {
     var message = "Sorry, it looks like you do not have any reservations to respond to";
     console.log(message);
+    res.redirect('/properties');
   });
 });
 
