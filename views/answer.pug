@@ -5,9 +5,9 @@ block nav_bg
 
 block content
   .container
-    h1 Anser to
-    div #{message}
+    h1 予約を承認しますか、拒否しますか
+    div #{"会員番号:"+message}
     form(action="/reservations/handle?employeeid=" + message + "&response=accept",method="post")
-      button.btn.btn-default(type='submit') Accept
+      button.btn.btn-default(type='submit') 承認
     form(action="/reservations/handle?employeeid=" + message + "&response=reject",method="post")
-      button.btn.btn-default(type='submit') Reject
+      button.btn.btn-default(type='submit') 拒否
